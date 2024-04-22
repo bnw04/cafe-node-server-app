@@ -17,7 +17,8 @@ export default function UserRoutes(app) {
       return;
     }
     const currentUser = req.session["currentUser"];
-    res.json(currentUser);
+    const user = await dao.findUserById(currentUser._id)
+    res.json(user);
   };
 
   const deleteUser = async (req, res) => {
